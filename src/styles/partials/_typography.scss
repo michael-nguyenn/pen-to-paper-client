@@ -1,0 +1,87 @@
+@use "./variables" as *;
+@use "./mixins" as *;
+
+* {
+  font-family: $work-sans;
+}
+
+h1 {
+  @include font(
+    $bold-font-weight,
+    $page-header-mobile-font-size,
+    $page-header-mobile-line-height
+  );
+
+  @include tablet {
+    @include font(
+      $bold-font-weight,
+      $page-header-normal-font-size,
+      $page-header-normal-line-height
+    );
+  }
+}
+
+h3,
+label {
+  @include font(
+    $bold-font-weight,
+    $section-header-mobile-font-size,
+    $section-header-mobile-line-height
+  );
+
+  @include tablet {
+    @include font(
+      $bold-font-weight,
+      $section-header-normal-font-size,
+      $section-header-normal-line-height
+    );
+  }
+}
+
+h4 {
+  @include font(
+    $bold-font-weight,
+    $subheader-mobile-font-size,
+    $subheader-mobile-line-height
+  );
+
+  @include tablet {
+    @include font(
+      $bold-font-weight,
+      $subheader-normal-font-size,
+      $subheader-normal-line-height
+    );
+  }
+}
+
+p {
+  @include font(
+    $normal-font-weight,
+    $body-copy-mobile-font-size,
+    $body-copy-mobile-line-height
+  );
+
+  @include tablet {
+    @include font(
+      $normal-font-weight,
+      $body-copy-normal-font-size,
+      $body-copy-normal-line-height
+    );
+  }
+}
+
+a {
+  @include font(
+    $bold-font-weight,
+    $labels-buttons-mobile-font-size,
+    $labels-buttons-mobile-line-height
+  );
+
+  @include tablet {
+    @include font(
+      $bold-font-weight,
+      $labels-buttons-normal-font-size,
+      $labels-buttons-normal-line-height
+    );
+  }
+}

@@ -1,0 +1,39 @@
+@use "./variables" as *;
+
+// MEDIA QUERIES
+
+@mixin tablet {
+  @media screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+  }
+}
+
+//FONT MIXINS
+
+@mixin font($font-weight, $font-size, $line-height) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+}
+
+// FLEXBOX MIXIN
+
+@mixin display-flex($direction, $justify, $align) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// CENTERING CONTAINERS MIXINS
+
+@mixin container-center($max-width) {
+  max-width: $max-width;
+  margin: 0 auto;
+}
