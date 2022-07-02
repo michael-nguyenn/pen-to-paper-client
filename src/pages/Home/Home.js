@@ -11,11 +11,11 @@ const Home = () => {
       <Header />
       <div className="hero">
         <div className="hero__container">
-          <div className="hero__right">
+          <div className="hero__left">
             <img src={hero} alt="hero image" className="hero__image" />
           </div>
 
-          <div className="hero__left">
+          <div className="hero__right">
             <div className="hero__text">
               <h1 className="hero__title">Pen to Paper</h1>
               <p className="hero__description">

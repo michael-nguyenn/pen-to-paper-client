@@ -6,13 +6,31 @@
     padding: 1rem;
     @include container-center(30rem);
 
+    @include tablet {
+      padding: 2rem;
+      @include display-flex(row-reverse, center, center);
+      @include container-center(80rem);
+    }
+
     @include desktop {
       @include container-center(80rem);
     }
   }
 
+  &__right {
+    @include tablet {
+      width: 40%;
+      padding: 1rem;
+    }
+  }
+
+  &__left {
+    @include tablet {
+      width: 60%;
+    }
+  }
+
   &__image {
-    max-height: 20rem;
     max-width: 100%;
   }
 
@@ -27,5 +45,10 @@
 
   &__button {
     @include display-flex(column, center, center);
+
+    @include tablet {
+      padding: 0 1rem;
+      flex-direction: row;
+    }
   }
 }
