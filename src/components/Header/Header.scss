@@ -1,0 +1,15 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
+.header {
+  background-color: $off-blue;
+  padding: 0.5rem 1rem;
+}
+
+.nav {
+  @include display-flex(row, space-between, center);
+
+  @include desktop {
+    @include container-center(80rem);
+  }
+}
