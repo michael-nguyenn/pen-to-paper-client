@@ -7,13 +7,13 @@ function UserHeader() {
   return (
     <header className="header">
       <nav className="nav">
-        <div className="user-nav">
-          <img src={calendar} alt="calendar" className="user-nav__logo" />
-          <p className="user-nav__text">Timeline</p>
+        <div className="user-header">
+          <img src={calendar} alt="calendar" className="user-header__logo" />
+          <p className="user-header__text">Timeline</p>
         </div>
 
         <div className="user-nav__right">
-          <img src={person} alt="person" className="user-nav__user" />
+          <img src={person} alt="person" className="user-header__user" />
         </div>
       </nav>
     </header>

@@ -1,0 +1,35 @@
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/mixins" as *;
+
+.user-nav {
+  width: 20%;
+  background-color: $off-blue;
+}
+
+.user-card {
+  padding: 1rem;
+
+  &__wrapper {
+    background-color: $off-white;
+    padding: 0.5rem;
+    height: 25vh;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    border-radius: 3px;
+    @include display-flex(column, flex-start, center);
+    height: 100%;
+  }
+
+  &__title {
+    font-family: $dancing-script;
+    color: $blue;
+    text-align: center;
+    width: 100%;
+    padding-top: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  &__message {
+    font-family: $work-sans;
+    font-size: 1rem;
+  }
+}

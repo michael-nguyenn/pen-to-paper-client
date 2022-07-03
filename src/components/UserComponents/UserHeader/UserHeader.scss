@@ -1,7 +1,7 @@
 @use "../../../styles/partials/variables" as *;
 @use "../../../styles/partials/mixins" as *;
 
-.user-nav {
+.user-header {
   @include display-flex(row, center, center);
 
   &__text {
