@@ -2,15 +2,18 @@ import "./User.scss";
 
 import UserNav from "../../components/UserComponents/UserNav/UserNav";
 import UserHeader from "../../components/UserComponents/UserHeader/UserHeader";
-import RichTextEditor from "../../components/RichTextEditor/RichTextEditor";
+import UserMain from "../../components/UserComponents/UserMain/UserMain";
 
-function User() {
+const User = () => {
   return (
     <>
       <UserHeader />
-      <UserNav />
+      <section className="user">
+        <UserNav />
+        <UserMain />
+      </section>
     </>
   );
-}
+};
 
 export default User;

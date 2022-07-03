@@ -1,0 +1,32 @@
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/mixins" as *;
+
+.user-banner {
+  height: 15vh;
+  border-bottom: 1px $off-blue;
+  padding: 0 1rem;
+
+  &__wrapper {
+    height: 100%;
+    @include display-flex(row, center, center);
+  }
+
+  &__quote {
+    padding-left: 1rem;
+    border-left: 0.2em solid $orange;
+    font-size: 1.25rem;
+    line-height: 1.5em;
+
+    &::before {
+      color: $blue;
+      content: "\201c";
+      margin-right: 0.5rem;
+    }
+
+    &::after {
+      color: $blue;
+      content: "\201e";
+      margin-left: 0.5rem;
+    }
+  }
+}
