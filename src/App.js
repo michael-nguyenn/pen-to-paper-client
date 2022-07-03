@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import Home from "./pages/Home/Home";
 import User from "./pages/User/User";
+import RichTextEditor from "./components/RichTextEditor/RichTextEditor";
 
 const App = () => {
   return (
@@ -10,6 +11,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/user" element={<User />} />
+        <Route path="/editor" element={<RichTextEditor />} />
       </Routes>
     </Router>
   );
