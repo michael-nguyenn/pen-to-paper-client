@@ -1,6 +1,14 @@
 import "./UserCard.scss";
+import React, { useState } from "react";
 
-function UserCard() {
+function UserCard({ templates, setSelectedTemplateId }) {
+  const [showMenu, setShowMenu] = useState(false);
+
+  const openMenu = (e) => {
+    e.preventDefault();
+    setShowMenu(!showMenu);
+  };
+
   return (
     <section className="user-card">
       <div className="user-card__wrapper">
@@ -8,7 +16,25 @@ function UserCard() {
         <p className="user-card__message">Start your day now ✍️</p>
 
         <div className="user-card__button">
-          <button className="button button--usernav">Select Template</button>
+          <button onClick={openMenu} className="button">
+            Select Template~
+          </button>
+
+          {showMenu ? (
+            <ul className="user-card__drop">
+              {templates.map((template) => {
+                return (
+                  <button
+                    className="user-card__option"
+                    onClick={() => setSelectedTemplateId(template.id)}
+                    key={template.id}
+                  >
+                    {template.title}
+                  </button>
+                );
+              })}
+            </ul>
+          ) : null}
         </div>
       </div>
     </section>

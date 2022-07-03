@@ -2,15 +2,15 @@
 @use "../../../styles/partials/mixins" as *;
 
 .user-card {
-  padding: 1.5rem;
+  padding: 1rem;
 
   &__wrapper {
     background-color: $off-white;
-    padding: 0.5rem;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     border-radius: 3px;
     @include display-flex(column, flex-start, center);
     height: 100%;
+    padding: 0.5rem 1.5rem;
   }
 
   &__title {
@@ -18,7 +18,7 @@
     color: $blue;
     text-align: center;
     width: 100%;
-    padding-top: 0.5rem;
+    padding: 1rem 0;
   }
 
   &__message {
@@ -27,7 +27,25 @@
   }
 
   &__button {
-    @include display-flex(row, center, center);
-    margin: 1rem 0;
+    padding: 1rem 0.5rem;
+    @include display-flex(column, center, center);
+    position: relative;
+    width: 100%;
+    position: relative;
+  }
+
+  &__drop {
+    width: 100%;
+    position: absolute;
+    top: 4rem;
+  }
+
+  &__option {
+    border: none;
+    width: 100%;
+    height: 2rem;
+    background-color: $off-blue;
+    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+    border-bottom: 1px solid $borders;
   }
 }

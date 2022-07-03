@@ -1,27 +1,33 @@
 import "./RichTextEditor.scss";
 import "medium-draft/lib/index.css";
 
-import React, { useState, useEffect, RichUtils } from "react";
-import { Editor } from "medium-draft";
-import { EditorState, convertToRaw } from "draft-js";
+import React, { useState, useEffect } from "react";
+import { Editor } from "react-draft-wysiwyg";
+import { EditorState, convertToRaw, RichUtils, convertFromRaw } from "draft-js";
 import axios from "axios";
 
 import deleteIcon from "../../assets/icons/delete.svg";
 
-function RichTextEditor({}) {
+function RichTextEditor({ selectedTemplate }) {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
 
+  console.log(selectedTemplate);
+
+  useEffect(() => {
+    selectedTemplate
+      ? setEditorState(
+          EditorState.createWithContent(
+            convertFromRaw(JSON.parse(selectedTemplate.content))
+          )
+        )
+      : setEditorState(EditorState.createEmpty());
+  }, [selectedTemplate]);
+
   const onChange = (editorState) => {
     setEditorState(editorState);
   };
-
-  const refsEditor = React.createRef();
-
-  useEffect(() => {
-    refsEditor.current.focus();
-  }, []);
 
   const handleKeyCommand = (command) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -69,10 +75,22 @@ function RichTextEditor({}) {
             </button>
           </div>
           <Editor
-            ref={refsEditor}
             editorState={editorState}
-            onChange={onChange}
+            onEditorStateChange={setEditorState}
+            placeholder="Start typing..."
             handleKeyCommand={handleKeyCommand}
+            wrapperClassName="wrapper-class"
+            editorClassName="editor-class"
+            toolbarClassName="toolbar-class"
+            spellCheck={true}
+            toolbar={{
+              inline: { inDropdown: true },
+              blockType: { dropdownClassName: "block-type" },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+            }}
           />
 
           <div className="editor__wrapper">

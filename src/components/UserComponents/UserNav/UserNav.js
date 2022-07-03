@@ -3,10 +3,13 @@ import "./UserNav.scss";
 import UserCard from "../UserCard/UserCard";
 import EntryPreview from "../EntryPreview/EntryPreview";
 
-function UserNav({ entries }) {
+function UserNav({ entries, templates, setSelectedTemplateId }) {
   return (
     <section className="user-nav">
-      <UserCard />
+      <UserCard
+        templates={templates}
+        setSelectedTemplateId={setSelectedTemplateId}
+      />
       <EntryPreview entries={entries} />
     </section>
   );

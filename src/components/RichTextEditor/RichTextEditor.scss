@@ -3,7 +3,7 @@
 
 .editor {
   padding: 2rem;
-  border: 1px solid $orange;
+  border: 1px solid $borders;
 
   &__top {
     @include display-flex(row, space-between, center);
@@ -36,4 +36,17 @@
     width: 50%;
     padding-top: 2rem;
   }
+}
+
+.editor-class {
+  border: 1px solid lightgrey;
+  background-color: $off-white;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 13px;
+  padding: 1rem;
+}
+
+.rdw-dropdown-selectedtext {
+  color: black;
+  text-decoration: none;
 }

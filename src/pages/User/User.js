@@ -10,10 +10,14 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 const User = () => {
-  const [entries, setEntries] = useState(null);
+  const [entries, setEntries] = useState([]);
   const [selectedEntry, setSelectedEntry] = useState(null);
+  const [templates, setTemplates] = useState([]);
+  const [selectedTemplateId, setSelectedTemplateId] = useState(null);
+  const [selectedTemplate, setSelectedTemplate] = useState(null);
 
   const { entryid } = useParams();
+  const API_URL = "http://localhost:8080";
 
   //GET ALL ENTRIES
   useEffect(() => {
@@ -31,7 +35,22 @@ const User = () => {
     }
   }, [entryid]);
 
-  const API_URL = "http://localhost:8080";
+  // GET ALL TEMPLATES
+  useEffect(() => {
+    getAll("templates").then((response) => {
+      setTemplates(response.data);
+    });
+  }, []);
+
+  // GET TEMPLATE BY ID
+  useEffect(() => {
+    if (selectedTemplateId) {
+      getById(selectedTemplateId, "templates").then((response) => {
+        setSelectedTemplate(response.data);
+        console.log(response.data);
+      });
+    }
+  }, [selectedTemplateId]);
 
   // FUNCTIONS TO GET ALL, AND BY ID
   const getById = (id, path) => {
@@ -42,12 +61,25 @@ const User = () => {
     return axios.get(`${API_URL}/${path}`);
   };
 
+  console.log(selectedTemplate);
+
   return (
     <>
       <UserHeader />
       <section className="user">
-        {entries ? <UserNav entries={entries} /> : <Loading />}
-        <UserMain selectedEntry={selectedEntry} />
+        {entries && templates ? (
+          <UserNav
+            entries={entries}
+            templates={templates}
+            setSelectedTemplateId={setSelectedTemplateId}
+          />
+        ) : (
+          <Loading />
+        )}
+        <UserMain
+          selectedEntry={selectedEntry}
+          selectedTemplate={selectedTemplate}
+        />
       </section>
     </>
   );

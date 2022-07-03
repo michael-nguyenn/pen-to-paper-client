@@ -1,12 +1,12 @@
 import "./EditEntryEditor.scss";
 import "medium-draft/lib/index.css";
 
-import React, { useState, useEffect, RichUtils } from "react";
-import { Editor } from "medium-draft";
-import { EditorState, convertFromRaw } from "draft-js";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { EditorState, convertFromRaw, RichUtils } from "draft-js";
+import { Editor } from "react-draft-wysiwyg";
 
 import deleteIcon from "../../assets/icons/delete.svg";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 
 function EditEntryEditor({ selectedEntry }) {
   const [editorState, setEditorState] = useState(() =>
@@ -23,17 +23,9 @@ function EditEntryEditor({ selectedEntry }) {
     );
   }, [selectedEntry]);
 
-  console.log(selectedEntry);
-
   const onChange = (editorState) => {
     setEditorState(editorState);
   };
-
-  const refsEditor = React.createRef();
-
-  useEffect(() => {
-    refsEditor.current.focus();
-  }, []);
 
   const handleKeyCommand = (command) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -64,10 +56,22 @@ function EditEntryEditor({ selectedEntry }) {
             </button>
           </div>
           <Editor
-            ref={refsEditor}
             editorState={editorState}
-            onChange={onChange}
+            onEditorStateChange={setEditorState}
+            placeholder="Start typing..."
             handleKeyCommand={handleKeyCommand}
+            wrapperClassName="wrapper-class"
+            editorClassName="editor-class"
+            toolbarClassName="toolbar-class"
+            spellCheck={true}
+            toolbar={{
+              inline: { inDropdown: true },
+              blockType: { dropdownClassName: "block-type" },
+              list: { inDropdown: true },
+              textAlign: { inDropdown: true },
+              link: { inDropdown: true },
+              history: { inDropdown: true },
+            }}
           />
 
           <div className="editor__wrapper">
