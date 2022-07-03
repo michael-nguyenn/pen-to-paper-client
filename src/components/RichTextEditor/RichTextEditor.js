@@ -6,6 +6,8 @@ import { Editor } from "medium-draft";
 import { EditorState, convertToRaw } from "draft-js";
 import axios from "axios";
 
+import deleteIcon from "../../assets/icons/delete.svg";
+
 function RichTextEditor() {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
@@ -51,8 +53,21 @@ function RichTextEditor() {
   return (
     <>
       <div className="editor">
-        <form onSubmit={handleSubmit} className="">
-          <h1>Hello!</h1>
+        <form onSubmit={handleSubmit} className="editor__form">
+          <div className="editor__top">
+            <label>
+              <input
+                type="text"
+                name="title"
+                className="editor__input"
+                placeholder="Entry Title"
+              />
+            </label>
+
+            <button className="button--delete">
+              <img src={deleteIcon} alt="delete icon" />
+            </button>
+          </div>
           <Editor
             ref={refsEditor}
             editorState={editorState}
@@ -60,10 +75,14 @@ function RichTextEditor() {
             handleKeyCommand={handleKeyCommand}
           />
 
-          <div>
-            <button type="submit" className="button">
-              Add Entry
-            </button>
+          <div className="editor__wrapper">
+            <div className="editor__button">
+              <button type="submit" className="button button--add">
+                Add
+              </button>
+
+              <button className="button button--edit">Edit</button>
+            </div>
           </div>
         </form>
       </div>

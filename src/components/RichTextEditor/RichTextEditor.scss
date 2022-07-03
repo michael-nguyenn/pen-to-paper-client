@@ -1,3 +1,33 @@
+@use "../../styles/partials/variables" as *;
+@use "../../styles/partials/mixins" as *;
+
 .editor {
   padding: 2rem;
+  border: 1px solid $orange;
+
+  &__top {
+    @include display-flex(row, space-between, center);
+  }
+
+  &__input {
+    border: none;
+    height: 3rem;
+    width: 80%;
+    font-size: 1rem;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &__wrapper {
+    @include display-flex(row, flex-end, center);
+    border-top: 1px solid $borders;
+  }
+
+  &__button {
+    @include display-flex(row-reverse, center, center);
+    width: 50%;
+    padding-top: 2rem;
+  }
 }

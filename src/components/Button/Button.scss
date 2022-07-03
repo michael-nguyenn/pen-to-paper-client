@@ -27,4 +27,17 @@
   &--usernav {
     background-color: $orange;
   }
+
+  &--delete {
+    border: none;
+  }
+
+  &--add {
+    background-color: $orange;
+    margin-left: 2rem;
+  }
+
+  &--edit {
+    width: 50%;
+  }
 }
