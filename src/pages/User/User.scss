@@ -4,6 +4,7 @@
 .user {
   display: flex;
   border: 1px solid $borders;
+  min-height: 80vh;
   @include desktop {
     @include container-center(80rem);
   }

@@ -55,7 +55,7 @@ function RichTextEditor() {
       <div className="editor">
         <form onSubmit={handleSubmit} className="editor__form">
           <div className="editor__top">
-            <label>
+            <label className="editor__label">
               <input
                 type="text"
                 name="title"

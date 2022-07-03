@@ -7,13 +7,19 @@
 
   &__top {
     @include display-flex(row, space-between, center);
+    width: 100%;
+  }
+
+  &__label {
+    width: 100%;
   }
 
   &__input {
     border: none;
     height: 3rem;
-    width: 80%;
-    font-size: 1rem;
+    width: 100%;
+    font-size: 2rem;
+    font-weight: bold;
 
     &:focus {
       outline: none;
