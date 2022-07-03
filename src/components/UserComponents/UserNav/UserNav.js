@@ -6,8 +6,8 @@ import EntryPreview from "../EntryPreview/EntryPreview";
 function UserNav({ entries }) {
   return (
     <section className="user-nav">
-      <UserCard entries={entries} />
-      <EntryPreview />
+      <UserCard />
+      <EntryPreview entries={entries} />
     </section>
   );
 }

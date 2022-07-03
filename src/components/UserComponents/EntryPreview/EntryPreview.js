@@ -1,17 +1,26 @@
 import "./EntryPreview.scss";
+import { Link } from "react-router-dom";
 
-function EntryPreview() {
+function EntryPreview({ entries }) {
   return (
-    <section className="entry-preview">
-      <div className="entry-preview__container">
-        <div className="entry-preview__wrapper">
-          <p className="entry-preview__entry">Journal Entry #1</p>
-          <h3 className="entry-preview__title">Title of Entry</h3>
-        </div>
+    <>
+      {entries.map((entry) => {
+        return (
+          <section className="entry-preview" key={entry.id}>
+            <Link to={`/user/${entry.id}`}>
+              <div className="entry-preview__container">
+                <div className="entry-preview__wrapper">
+                  <p className="entry-preview__entry">{`Journal Entry #${entry.id}`}</p>
+                  <h3 className="entry-preview__title">{entry.title}</h3>
+                </div>
 
-        <div className="entry-preview__date">Date</div>
-      </div>
-    </section>
+                <div className="entry-preview__date">date</div>
+              </div>
+            </Link>
+          </section>
+        );
+      })}
+    </>
   );
 }
 

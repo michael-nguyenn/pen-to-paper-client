@@ -1,17 +1,29 @@
-import "./RichTextEditor.scss";
+import "./EditEntryEditor.scss";
 import "medium-draft/lib/index.css";
 
 import React, { useState, useEffect, RichUtils } from "react";
 import { Editor } from "medium-draft";
-import { EditorState, convertToRaw } from "draft-js";
+import { EditorState, convertFromRaw } from "draft-js";
 import axios from "axios";
 
 import deleteIcon from "../../assets/icons/delete.svg";
 
-function RichTextEditor({}) {
+function EditEntryEditor({ selectedEntry }) {
   const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
+    EditorState.createWithContent(
+      convertFromRaw(JSON.parse(selectedEntry.content))
+    )
   );
+
+  useEffect(() => {
+    setEditorState(
+      EditorState.createWithContent(
+        convertFromRaw(JSON.parse(selectedEntry.content))
+      )
+    );
+  }, [selectedEntry]);
+
+  console.log(selectedEntry);
 
   const onChange = (editorState) => {
     setEditorState(editorState);
@@ -33,34 +45,17 @@ function RichTextEditor({}) {
     return "not-handled";
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const data = editorState.getCurrentContent();
-    const content = JSON.stringify(convertToRaw(data));
-
-    axios
-      .post("http://localhost:8080/entries", {
-        title: e.target.title.value,
-        content: content,
-      })
-      .then((response) => {
-        console.log(response);
-        window.location.replace("http://localhost:3000/user");
-      })
-      .catch((err) => console.log(err));
-  };
-
   return (
     <>
       <div className="editor">
-        <form onSubmit={handleSubmit} className="editor__form">
+        <form className="editor__form">
           <div className="editor__top">
             <label className="editor__label">
               <input
                 type="text"
                 name="title"
                 className="editor__input"
-                placeholder="Entry Title"
+                placeholder={selectedEntry.title}
               />
             </label>
 
@@ -90,4 +85,4 @@ function RichTextEditor({}) {
   );
 }
 
-export default RichTextEditor;
+export default EditEntryEditor;

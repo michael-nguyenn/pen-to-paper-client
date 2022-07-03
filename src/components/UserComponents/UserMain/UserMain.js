@@ -2,12 +2,17 @@ import "./UserMain.scss";
 
 import UserBanner from "../UserBanner/UserBanner";
 import RichTextEditor from "../../RichTextEditor/RichTextEditor";
+import EditEntryEditor from "../../EditEntryEditor/EditEntryEditor";
 
-function UserMain() {
+function UserMain({ selectedEntry }) {
   return (
     <div className="user-main">
       <UserBanner />
-      <RichTextEditor />
+      {selectedEntry ? (
+        <EditEntryEditor selectedEntry={selectedEntry} />
+      ) : (
+        <RichTextEditor />
+      )}
     </div>
   );
 }

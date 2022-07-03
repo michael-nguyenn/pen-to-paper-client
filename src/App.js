@@ -10,6 +10,7 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/user" element={<User />} />
+        <Route exact path="/user/:entryid" element={<User />} />
       </Routes>
     </Router>
   );

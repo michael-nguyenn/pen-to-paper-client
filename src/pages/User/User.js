@@ -7,9 +7,13 @@ import Loading from "../Loading/Loading";
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const User = () => {
   const [entries, setEntries] = useState(null);
+  const [selectedEntry, setSelectedEntry] = useState(null);
+
+  const { entryid } = useParams();
 
   //GET ALL ENTRIES
   useEffect(() => {
@@ -17,6 +21,15 @@ const User = () => {
       setEntries(response.data);
     });
   }, []);
+
+  //GET ONE ENTRY
+  useEffect(() => {
+    if (entryid) {
+      getById(entryid, "entries").then((response) => {
+        setSelectedEntry(response.data);
+      });
+    }
+  }, [entryid]);
 
   const API_URL = "http://localhost:8080";
 
@@ -34,7 +47,7 @@ const User = () => {
       <UserHeader />
       <section className="user">
         {entries ? <UserNav entries={entries} /> : <Loading />}
-        <UserMain />
+        <UserMain selectedEntry={selectedEntry} />
       </section>
     </>
   );
