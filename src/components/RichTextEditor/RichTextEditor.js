@@ -40,8 +40,8 @@ function RichTextEditor() {
 
     axios
       .post("http://localhost:8080/entries", {
+        title: e.target.title.value,
         content: content,
-        type: "daily",
       })
       .then((response) => {
         console.log(response);
