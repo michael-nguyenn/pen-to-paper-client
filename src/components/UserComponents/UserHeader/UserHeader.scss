@@ -1,0 +1,11 @@
+@use "../../../styles/partials/variables" as *;
+@use "../../../styles/partials/mixins" as *;
+
+.user-nav {
+  @include display-flex(row, center, center);
+
+  &__text {
+    margin-left: 0.5rem;
+    font-size: 0.75rem;
+  }
+}
