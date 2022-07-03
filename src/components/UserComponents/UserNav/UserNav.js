@@ -1,12 +1,20 @@
 import "./UserNav.scss";
 
+import UserCard from "../UserCard/UserCard";
+
 function UserNav() {
   return (
     <section className="user-nav">
-      <section className="user-card">
-        <div className="user-card__wrapper">
-          <h2 className="user-card__title">Welcome Michael!</h2>
-          <p className="user-card__message">Start your day now ✍️</p>
+      <UserCard />
+
+      <section className="entry-preview">
+        <div className="entry-preview__container">
+          <div className="entry-preview__wrapper">
+            <p className="entry-preview__entry">Journal Entry #1</p>
+            <h3 className="entry-preview__title">Title of Entry</h3>
+          </div>
+
+          <div className="entry-preview__date">Date</div>
         </div>
       </section>
     </section>

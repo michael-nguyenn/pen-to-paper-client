@@ -11,7 +11,6 @@ const App = () => {
       <Routes>
         <Route exact path="/" element={<Home />} />
         <Route exact path="/user" element={<User />} />
-        <Route path="/editor" element={<RichTextEditor />} />
       </Routes>
     </Router>
   );

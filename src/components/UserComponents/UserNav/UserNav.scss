@@ -2,34 +2,37 @@
 @use "../../../styles/partials/mixins" as *;
 
 .user-nav {
-  width: 20%;
   background-color: $off-blue;
+  border-right: 1px solid $borders;
+  width: 25%;
 }
 
-.user-card {
-  padding: 1rem;
+.entry-preview {
+  border: 1px solid $borders;
+  background-color: $off-white;
+
+  &__container {
+    @include display-flex(row, space-between, center);
+    padding: 1rem 1rem;
+  }
 
   &__wrapper {
-    background-color: $off-white;
-    padding: 0.5rem;
-    height: 25vh;
-    box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
-    border-radius: 3px;
-    @include display-flex(column, flex-start, center);
-    height: 100%;
+    @include display-flex(column, center, center);
+    width: 70%;
+  }
+
+  &__entry {
+    align-self: flex-start;
   }
 
   &__title {
-    font-family: $dancing-script;
-    color: $blue;
-    text-align: center;
-    width: 100%;
-    padding-top: 0.5rem;
-    margin-bottom: 1rem;
+    align-self: flex-start;
   }
 
-  &__message {
-    font-family: $work-sans;
-    font-size: 1rem;
+  &__date {
+    width: 30%;
+    text-align: end;
+    color: #6c757d;
+    font-size: 0.8rem;
   }
 }
