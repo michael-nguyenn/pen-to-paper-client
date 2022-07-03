@@ -7,16 +7,15 @@ import Loading from "../Loading/Loading";
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 const User = () => {
   const [entries, setEntries] = useState([]);
+  const [selectedEntryId, setSelectedEntryId] = useState(null);
   const [selectedEntry, setSelectedEntry] = useState(null);
   const [templates, setTemplates] = useState([]);
   const [selectedTemplateId, setSelectedTemplateId] = useState(null);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
 
-  const { entryid } = useParams();
   const API_URL = "http://localhost:8080";
 
   //GET ALL ENTRIES
@@ -28,12 +27,12 @@ const User = () => {
 
   //GET ONE ENTRY
   useEffect(() => {
-    if (entryid) {
-      getById(entryid, "entries").then((response) => {
+    if (selectedEntryId) {
+      getById(selectedEntryId, "entries").then((response) => {
         setSelectedEntry(response.data);
       });
     }
-  }, [entryid]);
+  }, [selectedEntryId]);
 
   // GET ALL TEMPLATES
   useEffect(() => {
@@ -61,8 +60,6 @@ const User = () => {
     return axios.get(`${API_URL}/${path}`);
   };
 
-  console.log(selectedTemplate);
-
   return (
     <>
       <UserHeader />
@@ -72,6 +69,7 @@ const User = () => {
             entries={entries}
             templates={templates}
             setSelectedTemplateId={setSelectedTemplateId}
+            setSelectedEntryId={setSelectedEntryId}
           />
         ) : (
           <Loading />

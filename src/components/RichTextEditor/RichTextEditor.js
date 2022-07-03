@@ -1,5 +1,4 @@
 import "./RichTextEditor.scss";
-import "medium-draft/lib/index.css";
 
 import React, { useState, useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
@@ -7,13 +6,13 @@ import { EditorState, convertToRaw, RichUtils, convertFromRaw } from "draft-js";
 import axios from "axios";
 
 import deleteIcon from "../../assets/icons/delete.svg";
+import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
+import "draft-js/dist/Draft.css";
 
-function RichTextEditor({ selectedTemplate }) {
+function RichTextEditor({ selectedTemplate, selectedEntry }) {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
-
-  console.log(selectedTemplate);
 
   useEffect(() => {
     selectedTemplate
@@ -24,6 +23,16 @@ function RichTextEditor({ selectedTemplate }) {
         )
       : setEditorState(EditorState.createEmpty());
   }, [selectedTemplate]);
+
+  useEffect(() => {
+    selectedEntry
+      ? setEditorState(
+          EditorState.createWithContent(
+            convertFromRaw(JSON.parse(selectedEntry.content))
+          )
+        )
+      : setEditorState(EditorState.createEmpty());
+  }, [selectedEntry]);
 
   const onChange = (editorState) => {
     setEditorState(editorState);
@@ -66,7 +75,7 @@ function RichTextEditor({ selectedTemplate }) {
                 type="text"
                 name="title"
                 className="editor__input"
-                placeholder="Entry Title"
+                placeholder={selectedTemplate.title}
               />
             </label>
 
