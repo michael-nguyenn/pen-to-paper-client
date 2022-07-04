@@ -2,8 +2,15 @@
 @use "../../../styles/partials/mixins" as *;
 
 .entry {
-  border-top: 1px solid $orange;
-  padding-top: 2rem;
+  overflow-x: scroll;
+  height: 26rem;
+
+  &__wrapper {
+    padding: 1rem;
+    border-top: 1px solid $orange;
+    border-bottom: 1px solid $orange;
+    margin-bottom: 1rem;
+  }
 }
 
 .entry-preview {

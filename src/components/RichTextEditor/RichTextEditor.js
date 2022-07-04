@@ -150,7 +150,7 @@ function RichTextEditor({
                 onClick={handleDelete}
                 className="button button--delete"
               >
-                Delete Entry
+                Delete
               </button>
             </div>
           </div>
