@@ -1,5 +1,4 @@
 import "./EntryPreview.scss";
-import { Link } from "react-router-dom";
 
 function EntryPreview({ entries, setSelectedEntryId }) {
   return (

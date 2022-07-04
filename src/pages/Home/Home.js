@@ -4,6 +4,7 @@ import hero from "../../assets/images/hero-banner.jpg";
 import Header from "../../components/Header/Header";
 import Footer from "../../components/Footer/Footer";
 import Button from "../../components/Button/Button";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -25,8 +26,12 @@ const Home = () => {
             </div>
 
             <div className="hero__button">
-              <Button className="button" text="Sign Up" />
-              <Button className="button button--special" text="Sign In" />
+              <Link to="/signup" className="button">
+                Sign Up
+              </Link>
+              <Link to="/login" className="button button--special">
+                Log In
+              </Link>
             </div>
           </div>
         </div>

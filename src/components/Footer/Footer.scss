@@ -9,6 +9,7 @@
     @include display-flex(row, space-between, center);
 
     @include desktop {
+      padding: 1.5rem;
       @include container-center(80rem);
     }
   }
