@@ -56,7 +56,6 @@ function Login() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

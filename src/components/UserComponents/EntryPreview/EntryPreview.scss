@@ -4,6 +4,9 @@
 .entry-preview {
   border: 1px solid $borders;
   background-color: $off-white;
+  box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
+  border-radius: 8px;
+  margin: 0;
 
   &__container {
     @include display-flex(row, space-between, center);

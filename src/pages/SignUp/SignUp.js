@@ -53,7 +53,6 @@ function SignUp() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

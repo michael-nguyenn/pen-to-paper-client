@@ -67,23 +67,25 @@ const User = () => {
     <>
       <UserHeader />
       <section className="user">
-        {entries && templates ? (
-          <UserNav
-            entries={entries}
-            templates={templates}
-            setSelectedTemplateId={setSelectedTemplateId}
-            setSelectedEntryId={setSelectedEntryId}
+        <section className="user__wrapper">
+          {entries && templates ? (
+            <UserNav
+              entries={entries}
+              templates={templates}
+              setSelectedTemplateId={setSelectedTemplateId}
+              setSelectedEntryId={setSelectedEntryId}
+            />
+          ) : (
+            <Loading />
+          )}
+          <UserMain
+            setSelectedEntry={setSelectedEntry}
+            selectedEntry={selectedEntry}
+            selectedTemplate={selectedTemplate}
+            editorState={editorState}
+            setEditorState={setEditorState}
           />
-        ) : (
-          <Loading />
-        )}
-        <UserMain
-          setSelectedEntry={setSelectedEntry}
-          selectedEntry={selectedEntry}
-          selectedTemplate={selectedTemplate}
-          editorState={editorState}
-          setEditorState={setEditorState}
-        />
+        </section>
       </section>
     </>
   );

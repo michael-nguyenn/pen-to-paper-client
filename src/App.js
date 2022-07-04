@@ -6,6 +6,7 @@ import User from "./pages/User/User";
 import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
 import Calendar from "./components/Calendar/Calendar";
+import Footer from "./components/Footer/Footer";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
         <Route exact path="login" element={<Login />} />
         <Route exact path="/calendar" element={<Calendar />} />
       </Routes>
+      <Footer />
     </Router>
   );
 };
