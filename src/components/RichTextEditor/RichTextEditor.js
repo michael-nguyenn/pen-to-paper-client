@@ -65,6 +65,38 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
       .catch((err) => console.log(err));
   };
 
+  const handleEdit = (e) => {
+    e.preventDefault();
+
+    const data = editorState.getCurrentContent();
+    const content = JSON.stringify(convertToRaw(data));
+
+    if (selectedEntry.id) {
+      axios
+        .patch(`http://localhost:8080/entries/${selectedEntry.id}`, {
+          id: selectedEntry.id,
+          content: content,
+        })
+        .then((response) => {
+          console.log(response);
+          window.location.replace("http://localhost:3000/user");
+        })
+        .catch((err) => console.log(err));
+    }
+  };
+
+  const handleDelete = (e) => {
+    e.preventDefault();
+    console.log(selectedEntry.id);
+
+    if (selectedEntry.id) {
+      axios
+        .delete(`http://localhost:8080/entries/${selectedEntry.id}`)
+        .then(() => window.location.replace("http://localhost:3000/user"))
+        .catch((err) => console.log(err));
+    }
+  };
+
   // const placeholder = () => {
   //   let placeholder;
   //   if (selectedEntry) {
@@ -86,11 +118,15 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
                 name="title"
                 className="editor__input"
                 placeholder="Title"
-                defaultValue=""
+                defaultValue={selectedEntry ? selectedEntry.title : ""}
               />
             </label>
 
-            <button className="button--delete">
+            <button
+              type="button"
+              className="button--delete"
+              onClick={handleDelete}
+            >
               <img src={deleteIcon} alt="delete icon" />
             </button>
           </div>
@@ -119,7 +155,13 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
                 Add
               </button>
 
-              <button className="button button--edit">Edit</button>
+              <button
+                type="button"
+                onClick={handleEdit}
+                className="button button--edit"
+              >
+                Edit
+              </button>
             </div>
           </div>
         </form>

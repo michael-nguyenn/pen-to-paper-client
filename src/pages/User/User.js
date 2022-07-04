@@ -60,6 +60,8 @@ const User = () => {
     return axios.get(`${API_URL}/${path}`);
   };
 
+  console.log(selectedEntryId);
+
   return (
     <>
       <UserHeader />
