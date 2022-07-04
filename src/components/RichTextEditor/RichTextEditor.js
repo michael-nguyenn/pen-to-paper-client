@@ -9,19 +9,24 @@ import deleteIcon from "../../assets/icons/delete.svg";
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "draft-js/dist/Draft.css";
 
-function RichTextEditor({ selectedTemplate, selectedEntry }) {
-  const [editorState, setEditorState] = useState(() =>
-    EditorState.createEmpty()
-  );
-
+function RichTextEditor({
+  selectedTemplate,
+  selectedEntry,
+  setSelectedEntry,
+  setEditorState,
+  editorState,
+}) {
   useEffect(() => {
-    selectedTemplate
-      ? setEditorState(
-          EditorState.createWithContent(
-            convertFromRaw(JSON.parse(selectedTemplate.content))
-          )
+    if (selectedTemplate) {
+      setEditorState(
+        EditorState.createWithContent(
+          convertFromRaw(JSON.parse(selectedTemplate.content))
         )
-      : setEditorState(EditorState.createEmpty());
+      );
+      setSelectedEntry(null);
+    } else {
+      setEditorState(EditorState.createEmpty());
+    }
   }, [selectedTemplate]);
 
   useEffect(() => {
@@ -53,34 +58,29 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
     const data = editorState.getCurrentContent();
     const content = JSON.stringify(convertToRaw(data));
 
-    axios
-      .post("http://localhost:8080/entries", {
-        title: e.target.title.value,
-        content: content,
-      })
-      .then((response) => {
-        console.log(response);
-        window.location.replace("http://localhost:3000/user");
-      })
-      .catch((err) => console.log(err));
-  };
-
-  const handleEdit = (e) => {
-    e.preventDefault();
-
-    const data = editorState.getCurrentContent();
-    const content = JSON.stringify(convertToRaw(data));
+    if (selectedEntry === null) {
+      axios
+        .post("http://localhost:8080/entries", {
+          title: e.target.title.value,
+          content: content,
+        })
+        .then(() => {
+          window.location.replace("http://localhost:3000/user");
+        })
+        .then(() => setSelectedEntry(null))
+        .catch((err) => console.log(err));
+    }
 
     if (selectedEntry.id) {
       axios
         .patch(`http://localhost:8080/entries/${selectedEntry.id}`, {
-          id: selectedEntry.id,
+          title: e.target.title.value,
           content: content,
         })
-        .then((response) => {
-          console.log(response);
+        .then(() => {
           window.location.replace("http://localhost:3000/user");
         })
+        .then(() => setSelectedEntry(null))
         .catch((err) => console.log(err));
     }
   };
@@ -97,15 +97,10 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
     }
   };
 
-  // const placeholder = () => {
-  //   let placeholder;
-  //   if (selectedEntry) {
-  //     placeholder = selectedEntry.title;
-  //   }
-  //   if (selectedTemplate) {
-  //     placeholder = selectedTemplate.title;
-  //   }
-  // };
+  const handleTemplate = (e) => {
+    e.preventDefault();
+    console.log("hello");
+  };
 
   return (
     <>
@@ -117,18 +112,14 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
                 type="text"
                 name="title"
                 className="editor__input"
-                placeholder="Title"
-                defaultValue={selectedEntry ? selectedEntry.title : ""}
+                placeholder="Your Title Here"
+                defaultValue={
+                  (selectedEntry && selectedEntry.title) ||
+                  (selectedTemplate && "") ||
+                  ""
+                }
               />
             </label>
-
-            <button
-              type="button"
-              className="button--delete"
-              onClick={handleDelete}
-            >
-              <img src={deleteIcon} alt="delete icon" />
-            </button>
           </div>
           <Editor
             editorState={editorState}
@@ -152,15 +143,15 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
           <div className="editor__wrapper">
             <div className="editor__button">
               <button type="submit" className="button button--add">
-                Add
+                Save
               </button>
 
               <button
                 type="button"
-                onClick={handleEdit}
-                className="button button--edit"
+                onClick={handleDelete}
+                className="button button--delete"
               >
-                Edit
+                Delete Entry
               </button>
             </div>
           </div>

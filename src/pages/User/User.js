@@ -7,6 +7,7 @@ import Loading from "../Loading/Loading";
 
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { EditorState } from "draft-js";
 
 const User = () => {
   const [entries, setEntries] = useState([]);
@@ -15,6 +16,9 @@ const User = () => {
   const [templates, setTemplates] = useState([]);
   const [selectedTemplateId, setSelectedTemplateId] = useState(null);
   const [selectedTemplate, setSelectedTemplate] = useState(null);
+  const [editorState, setEditorState] = useState(() =>
+    EditorState.createEmpty()
+  );
 
   const API_URL = "http://localhost:8080";
 
@@ -46,7 +50,6 @@ const User = () => {
     if (selectedTemplateId) {
       getById(selectedTemplateId, "templates").then((response) => {
         setSelectedTemplate(response.data);
-        console.log(response.data);
       });
     }
   }, [selectedTemplateId]);
@@ -59,8 +62,6 @@ const User = () => {
   const getAll = async (path) => {
     return axios.get(`${API_URL}/${path}`);
   };
-
-  console.log(selectedEntryId);
 
   return (
     <>
@@ -77,8 +78,11 @@ const User = () => {
           <Loading />
         )}
         <UserMain
+          setSelectedEntry={setSelectedEntry}
           selectedEntry={selectedEntry}
           selectedTemplate={selectedTemplate}
+          editorState={editorState}
+          setEditorState={setEditorState}
         />
       </section>
     </>
