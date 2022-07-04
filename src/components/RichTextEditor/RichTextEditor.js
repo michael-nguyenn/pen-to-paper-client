@@ -5,7 +5,6 @@ import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw, RichUtils, convertFromRaw } from "draft-js";
 import axios from "axios";
 
-import deleteIcon from "../../assets/icons/delete.svg";
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "draft-js/dist/Draft.css";
 
@@ -143,7 +142,7 @@ function RichTextEditor({
           <div className="editor__wrapper">
             <div className="editor__button">
               <button type="submit" className="button button--add">
-                Save
+                {selectedEntry === null ? "Add" : "Save"}
               </button>
 
               <button

@@ -1,6 +1,11 @@
 @use "../../../styles/partials/variables" as *;
 @use "../../../styles/partials/mixins" as *;
 
+.entry {
+  border-top: 1px solid $orange;
+  padding-top: 2rem;
+}
+
 .entry-preview {
   border: 1px solid $borders;
   background-color: $off-white;

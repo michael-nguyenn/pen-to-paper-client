@@ -2,7 +2,7 @@
 @use "../../../styles/partials/mixins" as *;
 
 .user-card {
-  padding: 1rem;
+  padding: 2rem 1rem;
 
   &__wrapper {
     background-color: $off-white;

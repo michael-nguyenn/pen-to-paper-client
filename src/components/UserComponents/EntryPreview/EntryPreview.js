@@ -1,11 +1,16 @@
 import "./EntryPreview.scss";
 
 function EntryPreview({ entries, setSelectedEntryId }) {
+  const dateConvert = (entryDate) => {
+    const date = new Date(entryDate);
+    return date.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+  };
+
   return (
-    <>
+    <section className="entry">
       {entries.map((entry) => {
         return (
-          <section
+          <div
             className="entry-preview"
             key={entry.id}
             onClick={() => setSelectedEntryId(entry.id)}
@@ -16,12 +21,14 @@ function EntryPreview({ entries, setSelectedEntryId }) {
                 <h3 className="entry-preview__title">{entry.title}</h3>
               </div>
 
-              <div className="entry-preview__date">date</div>
+              <div className="entry-preview__date">
+                {dateConvert(entry.date_created)}
+              </div>
             </div>
-          </section>
+          </div>
         );
       })}
-    </>
+    </section>
   );
 }
 
