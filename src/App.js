@@ -5,6 +5,7 @@ import Home from "./pages/Home/Home";
 import User from "./pages/User/User";
 import SignUp from "./pages/SignUp/SignUp";
 import Login from "./pages/Login/Login";
+import Calendar from "./components/Calendar/Calendar";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
         <Route exact path="/user" element={<User />} />
         <Route exact path="/signup" element={<SignUp />} />
         <Route exact path="login" element={<Login />} />
+        <Route exact path="/calendar" element={<Calendar />} />
       </Routes>
     </Router>
   );
