@@ -65,6 +65,16 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
       .catch((err) => console.log(err));
   };
 
+  // const placeholder = () => {
+  //   let placeholder;
+  //   if (selectedEntry) {
+  //     placeholder = selectedEntry.title;
+  //   }
+  //   if (selectedTemplate) {
+  //     placeholder = selectedTemplate.title;
+  //   }
+  // };
+
   return (
     <>
       <div className="editor">
@@ -75,7 +85,8 @@ function RichTextEditor({ selectedTemplate, selectedEntry }) {
                 type="text"
                 name="title"
                 className="editor__input"
-                placeholder={selectedTemplate.title}
+                placeholder="Title"
+                defaultValue=""
               />
             </label>
 
