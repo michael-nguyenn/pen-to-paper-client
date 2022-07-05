@@ -6,6 +6,8 @@ import {
   MenuItem,
   Button,
   useDisclosure,
+  Box,
+  Flex,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -16,13 +18,11 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import axios from "axios";
+import { motion } from "framer-motion";
 
-function UserCard({
-  templates,
-  setSelectedTemplateId,
-  selectedTemplate,
-  selectedTemplateId,
-}) {
+const MotionBox = motion(Box);
+
+function UserCard({ templates, setSelectedTemplateId, selectedTemplate }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
 
   const handleDelete = (e) => {
@@ -64,6 +64,13 @@ function UserCard({
 
           <Menu className="user-card__container">
             <MenuButton
+              bg="#039be5"
+              _hover={{
+                background: "#039be5",
+              }}
+              _active={{
+                background: "#039be5",
+              }}
               className="button button--trigger"
               as={Button}
               rightIcon={<ChevronDownIcon />}
