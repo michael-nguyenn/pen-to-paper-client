@@ -1,7 +1,6 @@
 import "./UserHeader.scss";
 
 import calendar from "../../../assets/icons/calendar.svg";
-import person from "../../../assets/icons/person.svg";
 
 import {
   Menu,

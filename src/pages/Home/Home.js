@@ -2,8 +2,7 @@ import "./Home.scss";
 import hero from "../../assets/images/hero-banner.jpg";
 
 import Header from "../../components/Header/Header";
-import Footer from "../../components/Footer/Footer";
-import Button from "../../components/Button/Button";
+
 import { Link } from "react-router-dom";
 
 const Home = () => {

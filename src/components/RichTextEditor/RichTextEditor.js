@@ -185,9 +185,11 @@ function RichTextEditor({
                 </button>
               )}
 
-              <Button className="button button--delete" onClick={onOpen}>
-                DELETE
-              </Button>
+              {!isTemplate && (
+                <Button className="button button--delete" onClick={onOpen}>
+                  DELETE
+                </Button>
+              )}
 
               <Modal isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />

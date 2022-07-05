@@ -5,7 +5,7 @@ import Header from "../../components/Header/Header";
 import login from "../../assets/images/log-in.jpg";
 
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 function Login({ setErrorMessage, setIsLoggedIn, setIsLoginError }) {
   const handleLogin = (e) => {

@@ -1,3 +1,82 @@
 @use "./styles/partials/global" as *;
 @use "./styles/partials/variables" as *;
 @use "./styles/partials/typography" as *;
+@use "./styles/partials/mixins" as *;
+
+//BUTTON STYLING
+
+.css-1d0ox2v {
+  background-color: none;
+}
+
+.button {
+  border: none;
+  width: 100%;
+  background-color: $blue;
+  padding: 0.5rem;
+  color: $off-white;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  border-radius: 8px;
+  transition: box-shadow 0.4s ease;
+
+  &:hover {
+    box-shadow: 0 1px 8px rgb(0 0 0 / 50%);
+  }
+
+  @include tablet {
+    padding: 0.75rem;
+  }
+
+  &--special {
+    background-color: $orange;
+    margin: 0.5rem 0;
+
+    @include tablet {
+      margin: 1rem;
+    }
+  }
+
+  &--usernav {
+    background-color: $orange;
+  }
+
+  &--delete {
+    border: none;
+  }
+
+  &--add {
+    margin-left: 2rem;
+  }
+
+  &--delete {
+    width: 50%;
+    background-color: red !important;
+  }
+
+  &--login {
+    margin: 0;
+    padding: 1rem 0;
+    margin-top: 1rem;
+  }
+
+  &--create {
+    margin: 0;
+    padding: 1rem 0;
+  }
+
+  &--save {
+    background-color: $orange;
+    margin-left: 1rem;
+  }
+
+  &--trigger {
+    border-radius: 15px;
+    cursor: pointer;
+    align-items: center;
+    transition: box-shadow 0.4s ease;
+    margin-bottom: 1.5rem;
+    background-color: $blue !important;
+  }
+}
