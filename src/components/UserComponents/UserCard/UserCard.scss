@@ -43,6 +43,7 @@
     background-color: $off-blue;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     border-bottom: 1px solid $borders;
+    justify-content: space-between;
 
     &:nth-child(1) {
       font-weight: bold;
@@ -52,15 +53,19 @@
   }
 }
 
-// .css-1d0ox2v {
-//   background: none;
-//   background-color: $blue;
+.close-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  &:nth-child(0) {
+    display: none;
+  }
 
-//   &:active {
-//     background-color: pink !important;
-//   }
+  @include display-flex(row, center, center);
+  &__text {
+    color: black;
+  }
+}
 
-//   &:hover {
-//     background-color: pink !important;
-//   }
-// }
+.close-hidden {
+  display: none;
+}

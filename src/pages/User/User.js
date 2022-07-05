@@ -74,6 +74,8 @@ const User = () => {
               templates={templates}
               setSelectedTemplateId={setSelectedTemplateId}
               setSelectedEntryId={setSelectedEntryId}
+              selectedTemplate={selectedTemplate}
+              selectedTemplateId={selectedTemplateId}
             />
           ) : (
             <Loading />

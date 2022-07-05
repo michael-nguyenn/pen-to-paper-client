@@ -9,6 +9,10 @@
   background-color: none;
 }
 
+.css-13azf7p {
+  background-color: $blue !important;
+}
+
 .button {
   border: none;
   width: 100%;
@@ -78,5 +82,10 @@
     transition: box-shadow 0.4s ease;
     margin-bottom: 1.5rem;
     background-color: $blue !important;
+  }
+
+  &--template {
+    padding: 0 !important;
+    background: none !important;
   }
 }
