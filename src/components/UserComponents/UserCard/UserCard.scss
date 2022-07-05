@@ -20,25 +20,20 @@
     text-align: center;
     width: 100%;
     padding: 1rem 0;
+    font-size: 2.2rem;
   }
 
   &__message {
     font-family: $work-sans;
-    font-size: 1rem;
-  }
-
-  &__button {
-    padding: 1rem 0.5rem;
-    @include display-flex(column, center, center);
-    position: relative;
-    width: 100%;
-    position: relative;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
   }
 
   &__drop {
-    width: 100%;
     position: absolute;
-    top: 4rem;
+    left: 2.2rem;
+    top: -0.4rem;
+    width: 15rem;
   }
 
   &__option {
@@ -48,5 +43,11 @@
     background-color: $off-blue;
     box-shadow: 0px 2px 5px rgba(19, 24, 44, 0.1);
     border-bottom: 1px solid $borders;
+
+    &:nth-child(1) {
+      font-weight: bold;
+      color: $blue;
+      background-color: $borders;
+    }
   }
 }

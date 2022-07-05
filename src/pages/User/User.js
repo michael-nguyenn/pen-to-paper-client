@@ -84,6 +84,7 @@ const User = () => {
             selectedTemplate={selectedTemplate}
             editorState={editorState}
             setEditorState={setEditorState}
+            selectedTemplateId={selectedTemplateId}
           />
         </section>
       </section>

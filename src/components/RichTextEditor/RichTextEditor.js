@@ -14,7 +14,10 @@ function RichTextEditor({
   setSelectedEntry,
   setEditorState,
   editorState,
+  selectedTemplateId,
 }) {
+  const [isTemplate, setIsTemplate] = useState(false);
+
   useEffect(() => {
     if (selectedTemplate) {
       setEditorState(
@@ -29,14 +32,26 @@ function RichTextEditor({
   }, [selectedTemplate]);
 
   useEffect(() => {
-    selectedEntry
-      ? setEditorState(
-          EditorState.createWithContent(
-            convertFromRaw(JSON.parse(selectedEntry.content))
-          )
+    if (selectedEntry) {
+      setEditorState(
+        EditorState.createWithContent(
+          convertFromRaw(JSON.parse(selectedEntry.content))
         )
-      : setEditorState(EditorState.createEmpty());
+      );
+      setIsTemplate(false);
+    } else {
+      setEditorState(EditorState.createEmpty());
+    }
   }, [selectedEntry]);
+
+  useEffect(() => {
+    if (selectedTemplateId === 1) {
+      setEditorState(EditorState.createEmpty());
+      setIsTemplate(true);
+    } else {
+      setIsTemplate(false);
+    }
+  }, [selectedTemplate]);
 
   const onChange = (editorState) => {
     setEditorState(editorState);
@@ -57,7 +72,19 @@ function RichTextEditor({
     const data = editorState.getCurrentContent();
     const content = JSON.stringify(convertToRaw(data));
 
-    if (selectedEntry === null) {
+    if (isTemplate) {
+      axios
+        .post("http://localhost:8080/templates", {
+          title: e.target.title.value,
+          content: content,
+        })
+        .then(() => {
+          setIsTemplate(false);
+          window.location.replace("http://localhost:3000/user");
+        });
+    }
+
+    if (selectedEntry === null && selectedTemplateId !== 1) {
       axios
         .post("http://localhost:8080/entries", {
           title: e.target.title.value,
@@ -141,9 +168,15 @@ function RichTextEditor({
 
           <div className="editor__wrapper">
             <div className="editor__button">
-              <button type="submit" className="button button--add">
-                {selectedEntry === null ? "Add" : "Save"}
-              </button>
+              {isTemplate ? (
+                <button type="submit" className="button button--save">
+                  Save Template
+                </button>
+              ) : (
+                <button type="submit" className="button button--add">
+                  {selectedEntry === null ? "Add" : "Save"}
+                </button>
+              )}
 
               <button
                 type="button"

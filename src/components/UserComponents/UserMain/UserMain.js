@@ -9,6 +9,7 @@ function UserMain({
   setSelectedEntry,
   setEditorState,
   editorState,
+  selectedTemplateId,
 }) {
   return (
     <div className="user-main">
@@ -19,6 +20,7 @@ function UserMain({
         selectedEntry={selectedEntry}
         editorState={editorState}
         setEditorState={setEditorState}
+        selectedTemplateId={selectedTemplateId}
       />
     </div>
   );
