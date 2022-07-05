@@ -1,24 +1,8 @@
 import "./UserCard.scss";
-import React, { useRef } from "react";
-import { useDetectOutsideClick } from "../../../hooks/useDetectOutsideClick";
-import {
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuItemOption,
-  MenuGroup,
-  MenuOptionGroup,
-  MenuDivider,
-} from "@chakra-ui/react";
+import { Menu, MenuButton, MenuList, MenuItem, Button } from "@chakra-ui/react";
+import { ChevronDownIcon } from "@chakra-ui/icons";
 
 function UserCard({ templates, setSelectedTemplateId }) {
-  const dropdownRef = useRef(null);
-  const [isActive, setIsActive] = useDetectOutsideClick(dropdownRef, false);
-  const onClick = () => setIsActive(!isActive);
-
-  console.log(isActive);
-
   return (
     <section className="user-card">
       <div className="user-card__wrapper">
@@ -26,7 +10,11 @@ function UserCard({ templates, setSelectedTemplateId }) {
         <p className="user-card__message">Start your day now ✍️</p>
 
         <Menu className="user-card__container">
-          <MenuButton className="button button--trigger" rightIcon="">
+          <MenuButton
+            className="button button--trigger"
+            as={Button}
+            rightIcon={<ChevronDownIcon />}
+          >
             Select Template~
           </MenuButton>
           <MenuList className="user-card__drop">
