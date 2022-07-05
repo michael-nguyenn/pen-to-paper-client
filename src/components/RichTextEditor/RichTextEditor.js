@@ -4,6 +4,17 @@ import React, { useState, useEffect } from "react";
 import { Editor } from "react-draft-wysiwyg";
 import { EditorState, convertToRaw, RichUtils, convertFromRaw } from "draft-js";
 import axios from "axios";
+import {
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+  Button,
+} from "@chakra-ui/react";
 
 import "../../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import "draft-js/dist/Draft.css";
@@ -17,6 +28,7 @@ function RichTextEditor({
   selectedTemplateId,
 }) {
   const [isTemplate, setIsTemplate] = useState(false);
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   useEffect(() => {
     if (selectedTemplate) {
@@ -123,11 +135,6 @@ function RichTextEditor({
     }
   };
 
-  const handleTemplate = (e) => {
-    e.preventDefault();
-    console.log("hello");
-  };
-
   return (
     <>
       <div className="editor">
@@ -178,13 +185,29 @@ function RichTextEditor({
                 </button>
               )}
 
-              <button
-                type="button"
-                onClick={handleDelete}
-                className="button button--delete"
-              >
-                Delete
-              </button>
+              <Button className="button button--delete" onClick={onOpen}>
+                DELETE
+              </Button>
+
+              <Modal isOpen={isOpen} onClose={onClose}>
+                <ModalOverlay />
+                <ModalContent>
+                  <ModalHeader>Delete Entry?</ModalHeader>
+                  <ModalCloseButton />
+                  <ModalBody>
+                    Are you sure you want to delete this entry?
+                  </ModalBody>
+
+                  <ModalFooter>
+                    <Button colorScheme="blue" mr={3} onClick={onClose}>
+                      Close
+                    </Button>
+                    <Button onClick={handleDelete} variant="ghost">
+                      DELETE
+                    </Button>
+                  </ModalFooter>
+                </ModalContent>
+              </Modal>
             </div>
           </div>
         </form>

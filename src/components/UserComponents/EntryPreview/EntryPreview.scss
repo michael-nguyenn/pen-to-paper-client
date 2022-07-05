@@ -23,6 +23,11 @@
   &__container {
     @include display-flex(row, space-between, center);
     padding: 1rem 1rem;
+    transition: box-shadow 0.4s ease;
+
+    &:hover {
+      box-shadow: 0 1px 8px rgb(0 0 0 / 30%);
+    }
   }
 
   &__wrapper {

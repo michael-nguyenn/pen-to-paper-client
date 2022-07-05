@@ -1,6 +1,10 @@
 @use "../../styles/partials/variables" as *;
 @use "../../styles/partials/mixins" as *;
 
+.css-1d0ox2v {
+  background-color: none;
+}
+
 .button {
   border: none;
   width: 100%;
@@ -11,6 +15,11 @@
   font-size: 1rem;
   text-align: center;
   border-radius: 8px;
+  transition: box-shadow 0.4s ease;
+
+  &:hover {
+    box-shadow: 0 1px 8px rgb(0 0 0 / 50%);
+  }
 
   @include tablet {
     padding: 0.75rem;
@@ -39,7 +48,7 @@
 
   &--delete {
     width: 50%;
-    background-color: red;
+    background-color: red !important;
   }
 
   &--login {
@@ -62,12 +71,8 @@
     border-radius: 15px;
     cursor: pointer;
     align-items: center;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
     transition: box-shadow 0.4s ease;
     margin-bottom: 1.5rem;
-
-    &:hover {
-      box-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
-    }
+    background-color: $blue !important;
   }
 }
