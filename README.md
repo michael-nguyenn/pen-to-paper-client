@@ -1,70 +1,56 @@
-# Getting Started with Create React App
+# Pen To Paper
+***Pen To Paper is a simple journalling application where you can create your own entries or save them as templates***
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created over a two week period as my capstone project for BrainStation's full-stack development bootcamp. Pen to Paper was made using create-react-app, react-router, and SASS for the front end, a Node/Express backend API with JWT for auth, and Knex to query a MySQL database. 
 
-## Available Scripts
+## :running: Run Locally
 
-In the project directory, you can run:
+Follow these steps to run a local instance of Pen To Paper. You will also need to install Pen To Paper's [server](https://github.com/n93michael/pen-to-paper-server):  
+(You'll need node and npm already installed.)
 
-### `npm start`
+<!-- Run Locally -->
+### Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. Clone the project
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+```bash
+  git clone git@github.com:n93michael/pen-to-paper-client.git
+```
 
-### `npm test`
+2. Go to the project directory
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+  cd pen-to-paper-client
+```
 
-### `npm run build`
+3. Install dependencies
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```bash
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. Start the app
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+  npm start
+```
 
-### `npm run eject`
+<!-- TechStack -->
+## :space_invader: Tech Stack
+- React
+- Draft.js
+- React Router
+- SASS
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+<!-- Roadmap -->
+## :compass: Roadmap
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [ ] Complete auth process
+* [ ] Add in to-do blocks
+* [ ] Improve keystroke shortcuts 
+* [ ] implement a calendar view
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+<!-- Contact -->
+## :handshake: Contact
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/michael--nguyen/)
