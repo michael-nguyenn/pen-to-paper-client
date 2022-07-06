@@ -184,12 +184,28 @@ function RichTextEditor({
             toolbarClassName="toolbar-class"
             spellCheck={true}
             toolbar={{
+              options: [
+                "inline",
+                "blockType",
+                "fontSize",
+                "fontFamily",
+                "list",
+                "textAlign",
+                "colorPicker",
+                "link",
+                "image",
+                "history",
+              ],
               inline: { inDropdown: true },
               blockType: { dropdownClassName: "block-type" },
               list: { inDropdown: true },
               textAlign: { inDropdown: true },
               link: { inDropdown: true },
               history: { inDropdown: true },
+            }}
+            hashtag={{
+              separator: " ",
+              trigger: "#",
             }}
           />
 
