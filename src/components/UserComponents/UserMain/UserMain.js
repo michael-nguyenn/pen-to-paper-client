@@ -10,6 +10,8 @@ function UserMain({
   setEditorState,
   editorState,
   selectedTemplateId,
+  entries,
+  templates,
 }) {
   return (
     <div className="user-main">
@@ -21,6 +23,8 @@ function UserMain({
         editorState={editorState}
         setEditorState={setEditorState}
         selectedTemplateId={selectedTemplateId}
+        entries={entries}
+        templates={templates}
       />
     </div>
   );

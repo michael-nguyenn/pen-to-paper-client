@@ -6,8 +6,6 @@ import {
   MenuItem,
   Button,
   useDisclosure,
-  Box,
-  Flex,
   Modal,
   ModalOverlay,
   ModalContent,
@@ -18,9 +16,6 @@ import {
 } from "@chakra-ui/react";
 import { ChevronDownIcon } from "@chakra-ui/icons";
 import axios from "axios";
-import { motion } from "framer-motion";
-
-const MotionBox = motion(Box);
 
 function UserCard({ templates, setSelectedTemplateId, selectedTemplate }) {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -77,6 +72,7 @@ function UserCard({ templates, setSelectedTemplateId, selectedTemplate }) {
             >
               Select Template~
             </MenuButton>
+
             <MenuList className="user-card__drop">
               {templates.map((template) => {
                 return (
@@ -95,9 +91,9 @@ function UserCard({ templates, setSelectedTemplateId, selectedTemplate }) {
                         onClick={handleDelete}
                         className="close-icon__text"
                       ></div>
-                      <Button className="button--template" onClick={onOpen}>
+                      <div className="button--template" onClick={onOpen}>
                         x
-                      </Button>
+                      </div>
                     </div>
                   </MenuItem>
                 );

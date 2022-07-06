@@ -19,6 +19,7 @@ const User = () => {
   const [editorState, setEditorState] = useState(() =>
     EditorState.createEmpty()
   );
+  const [isOnSamePage, setIsOnSamePage] = useState(true);
 
   const API_URL = "http://localhost:8080";
 
@@ -54,6 +55,13 @@ const User = () => {
     }
   }, [selectedTemplateId]);
 
+  useEffect(() => {
+    if (isOnSamePage) {
+      //force Products Component to rerender;
+      setIsOnSamePage(false);
+    }
+  }, []);
+
   // FUNCTIONS TO GET ALL, AND BY ID
   const getById = (id, path) => {
     return axios.get(`${API_URL}/${path}/${id}`);
@@ -87,6 +95,8 @@ const User = () => {
             editorState={editorState}
             setEditorState={setEditorState}
             selectedTemplateId={selectedTemplateId}
+            entries={entries}
+            templates={templates}
           />
         </section>
       </section>

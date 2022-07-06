@@ -26,6 +26,8 @@ function RichTextEditor({
   setEditorState,
   editorState,
   selectedTemplateId,
+  entries,
+  templates,
 }) {
   const [isTemplate, setIsTemplate] = useState(false);
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -137,6 +139,24 @@ function RichTextEditor({
 
   return (
     <>
+      <Modal isOpen={isOpen} onClose={onClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Delete Entry?</ModalHeader>
+          <ModalCloseButton />
+          <ModalBody>Are you sure you want to delete this entry?</ModalBody>
+
+          <ModalFooter>
+            <Button colorScheme="blue" mr={3} onClick={onClose}>
+              Close
+            </Button>
+            <Button onClick={handleDelete} variant="ghost">
+              DELETE
+            </Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
       <div className="editor">
         <form onSubmit={handleSubmit} className="editor__form">
           <div className="editor__top">
@@ -185,31 +205,13 @@ function RichTextEditor({
                 </button>
               )}
 
-              {!isTemplate && (
-                <Button className="button button--delete" onClick={onOpen}>
-                  DELETE
-                </Button>
-              )}
-
-              <Modal isOpen={isOpen} onClose={onClose}>
-                <ModalOverlay />
-                <ModalContent>
-                  <ModalHeader>Delete Entry?</ModalHeader>
-                  <ModalCloseButton />
-                  <ModalBody>
-                    Are you sure you want to delete this entry?
-                  </ModalBody>
-
-                  <ModalFooter>
-                    <Button colorScheme="blue" mr={3} onClick={onClose}>
-                      Close
-                    </Button>
-                    <Button onClick={handleDelete} variant="ghost">
+              {!isTemplate
+                ? entries.length !== 0 && (
+                    <Button className="button button--delete" onClick={onOpen}>
                       DELETE
                     </Button>
-                  </ModalFooter>
-                </ModalContent>
-              </Modal>
+                  )
+                : ""}
             </div>
           </div>
         </form>
