@@ -37,10 +37,13 @@
 
   &__entry {
     align-self: flex-start;
+    font-size: 0.75rem;
   }
 
   &__title {
     align-self: flex-start;
+    font-size: 1.1rem;
+    font-weight: bold;
   }
 
   &__date {

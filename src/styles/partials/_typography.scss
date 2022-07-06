@@ -21,6 +21,18 @@ h1 {
   }
 }
 
+h1 {
+  @include tablet {
+    font-size: 3rem !important;
+  }
+}
+
+h2 {
+  @include tablet {
+    font-size: 2rem !important;
+  }
+}
+
 h3,
 label {
   @include font(

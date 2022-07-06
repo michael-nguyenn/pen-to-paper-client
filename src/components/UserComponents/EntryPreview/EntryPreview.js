@@ -27,8 +27,8 @@ function EntryPreview({ entries, setSelectedEntryId }) {
             >
               <div className="entry-preview__container">
                 <div className="entry-preview__wrapper">
-                  <p className="entry-preview__entry">{`Journal Entry #${entry.id}`}</p>
                   <h3 className="entry-preview__title">{entry.title}</h3>
+                  <p className="entry-preview__entry">{`Entry #${entry.id}`}</p>
                 </div>
 
                 <div className="entry-preview__date">

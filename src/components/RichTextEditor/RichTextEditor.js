@@ -223,7 +223,11 @@ function RichTextEditor({
 
               {!isTemplate
                 ? entries.length !== 0 && (
-                    <Button className="button button--delete" onClick={onOpen}>
+                    <Button
+                      className="button button--delete"
+                      onClick={onOpen}
+                      bg="red"
+                    >
                       DELETE
                     </Button>
                   )
