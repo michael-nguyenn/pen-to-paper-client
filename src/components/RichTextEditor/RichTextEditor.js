@@ -227,6 +227,12 @@ function RichTextEditor({
                       className="button button--delete"
                       onClick={onOpen}
                       bg="red"
+                      _hover={{
+                        background: "red",
+                      }}
+                      _active={{
+                        background: "#ed",
+                      }}
                     >
                       DELETE
                     </Button>
